@@ -1,5 +1,7 @@
-from masks import get_mask_account, get_mask_card_number
 from datetime import datetime
+
+from masks import get_mask_account, get_mask_card_number
+
 
 def mask_account_card(info_account_or_card: str) -> str:
     """Обработка информации о о картах и счетах"""
@@ -20,7 +22,6 @@ def get_date(date_str: str) -> str:
     date_obj = datetime.fromisoformat(date_str)
     formatted_date = date_obj.strftime("%d.%m.%Y")
     return formatted_date
-
 
 
 if __name__ == "__main__":
