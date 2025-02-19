@@ -1,6 +1,6 @@
 # Banking operations
 
-Наш проект представлен в виде виджета банковских операций клиента.
+Наш проект направлен на облегчение задач банка и на использование виджетов клиентом.
 
 ## Установка
 
@@ -19,7 +19,7 @@
 
 ## Использование
 
-Примеры использования функций:
+Примеры использования простых функций:
 
 ```python
 from src.processing import filter_by_state, sort_by_date
@@ -35,16 +35,29 @@ executed_transactions = filter_by_state(transactions)
 sorted_transactions = sort_by_date(transactions)
 ```
 
+Примеры использований генераторов в функциях:
+```
+descriptions = transaction_descriptions(transactions)
+for _ in range(5):
+    print(next(descriptions))
+
+>>> Перевод организации
+    Перевод со счета на счет
+    Перевод со счета на счет
+    Перевод с карты на карту
+    Перевод организации
+```
 ## Тестирование
 
-В нашем проекте используется тестирование для обеспечения надёжности и корректности работы. Был использован фреймвор pytest.
-Все написанные тесты находятся в папке tests, там же можно найти файл со всеми фикстурами в модуле "conftest.py"
+В нашем проекте используется тестирование для корректности работы. Мы использовали фреймвор pytest.
+Все написанные тесты находятся в папке tests, там же лежит файл со всеми фикстурами и параметризациями (модуль "conftest.py")
 
 ```
-File	         statements missing excluded coverage
-src\__init__.py	    0	       0       0      100%
-src\masks.py	   17	       0       0      100%
-src\processing.py   8	       0       0      100%
-src\widget.py	   24	       0       0      100%
-Total	           49	       0       0      100%
+File	       statements missing excluded coverage
+src\__init__.py	   0	     0	     0	     100%
+src\generators.py  9	     0	     0	     100%
+src\masks.py	  17	     0	     0	     100%
+src\processing.py  8	     0	     0	     100%
+src\widget.py	  24	     0	     0	     100%
+Total	          58	     0	     0	     100%
 ```
