@@ -10,7 +10,7 @@ def log(filename=""):
             try:
                 result = func(*args, **kwargs)
                 if os.path.isfile(filename):
-                    with open(filename, "a") as file:
+                    with open(os.path.abspath(filename), "a") as file:
                         output = f"{func.__name__} ok\n"
                         file.write(output)
                 else:
@@ -18,7 +18,7 @@ def log(filename=""):
                 return result
             except Exception as e:
                 if os.path.isfile(filename):
-                    with open(filename, "a") as file:
+                    with open(os.path.abspath(filename), "a") as file:
                         output = f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}\n"
                         file.write(output)
                 else:

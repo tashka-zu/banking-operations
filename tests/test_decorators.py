@@ -17,7 +17,7 @@ def test_log2():
         return x + y
 
     my_function(1, "2")
-    with open("mylog.txt", "r") as file:
+    with open("tests/mylog.txt", "r") as file:
         reading = file.read()
         assert (
             reading == "my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '2'), {}\n"
