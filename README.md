@@ -36,17 +36,33 @@ sorted_transactions = sort_by_date(transactions)
 ```
 
 Примеры использований генераторов в функциях:
-```
+```python
+from src.generators import transaction_descriptions
+from tests.conftest import transactions
+
 descriptions = transaction_descriptions(transactions)
 for _ in range(5):
     print(next(descriptions))
 
->>> Перевод организации
-    Перевод со счета на счет
-    Перевод со счета на счет
-    Перевод с карты на карту
-    Перевод организации
+# >>> Перевод организации
+#     Перевод со счета на счет
+#     Перевод со счета на счет
+#     Перевод с карты на карту
+#     Перевод организации
 ```
+
+Примеры использований декоратора:
+```python
+from src.decorators import log
+
+@log(filename='')
+def my_function(x, y):
+    return x + y
+my_function(1, 2)
+
+# >>> my_function ok
+```
+
 ## Тестирование
 
 В нашем проекте используется тестирование для корректности работы. Мы использовали фреймвор pytest.
@@ -55,6 +71,7 @@ for _ in range(5):
 ```
 File	       statements missing excluded coverage
 src\__init__.py	   0	     0	     0	     100%
+src\decorators.py 20         3       0        85%
 src\generators.py  9	     0	     0	     100%
 src\masks.py	  17	     0	     0	     100%
 src\processing.py  8	     0	     0	     100%
