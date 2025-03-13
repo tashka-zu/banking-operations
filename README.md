@@ -73,12 +73,14 @@ my_function(1, 2)
 Все написанные тесты находятся в папке tests, там же лежит файл со всеми фикстурами и параметризациями (модуль "conftest.py")
 
 ```
-File	       statements missing excluded coverage
-src\__init__.py	   0	     0	     0	     100%
-src\decorators.py 20         3       0        85%
-src\generators.py  9	     0	     0	     100%
-src\masks.py	  17	     0	     0	     100%
-src\processing.py  8	     0	     0	     100%
-src\widget.py	  24	     0	     0	     100%
-Total	          58	     0	     0	     100%
+File	        statements missing excluded coverage
+src\__init__.py	     0	     0	     0	     100%
+src\decorators.py   20       3       0        85%
+src\external_api.py 17	     0	     0	     100%
+src\generators.py    9	     0	     0	     100%
+src\masks.py	    17	     0	     0	     100%
+src\processing.py    8	     0	     0	     100%
+src\utils.py	    13	     2	     0	      85%
+src\widget.py	    24	     0	     0	     100%
+Total	            58	     0	     0	     100%
 ```
