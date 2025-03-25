@@ -25,5 +25,3 @@ def convert_to_rub(transaction):
     if response.status_code == 200:
         conversion_result = response.json()
         return conversion_result["result"]
-    else:
-        return None
