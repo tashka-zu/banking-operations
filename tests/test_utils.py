@@ -1,7 +1,7 @@
 import json
 from unittest.mock import mock_open, patch
 
-from src.utils import load_transactions
+from src.utils import count_transactions_by_category, load_transactions, search_transactions_by_description
 
 
 def test_load_transaction():
@@ -31,3 +31,25 @@ def test_load_transaction_error():
 
     assert outcome == []
     mock_error.assert_called_once()
+
+
+def test_search_transactions_by_description():
+    transactions = [
+        {"description": "Перевод на карту"},
+        {"description": "Оплата счета"},
+        {"description": "Перевод организации"},
+    ]
+    assert len(search_transactions_by_description(transactions, "Перевод")) == 2
+    assert len(search_transactions_by_description(transactions, "Счет")) == 1
+    assert len(search_transactions_by_description(transactions, "Несуществующий")) == 0
+
+
+def test_count_transactions_by_category():
+    transactions = [
+        {"description": "Перевод на карту"},
+        {"description": "Оплата счета"},
+        {"description": "Перевод организации"},
+    ]
+    categories = ["Перевод", "Оплата"]
+    result = count_transactions_by_category(transactions, categories)
+    assert result == {"Перевод": 2, "Оплата": 1}

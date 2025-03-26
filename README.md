@@ -67,6 +67,27 @@ my_function(1, 2)
 # >>> my_function ok
 ```
 
+Примеры использования новых функций:
+
+```python
+from src.utils import search_transactions_by_description, count_transactions_by_category
+
+# Пример использования search_transactions_by_description
+transactions = [
+    {'description': 'Перевод на карту', 'amount': '1000 руб'},
+    {'description': 'Оплата счета', 'amount': '200 USD'},
+    {'description': 'Перевод организации', 'amount': '300 руб'}
+]
+search_string = "Перевод"
+filtered_transactions = search_transactions_by_description(transactions, search_string)
+
+# Пример использования count_transactions_by_category
+categories = ['Перевод', 'Оплата']
+category_counts = count_transactions_by_category(transactions, categories)
+print(category_counts)
+# >>> {'Перевод': 2, 'Оплата': 1}
+```
+
 ## Тестирование
 
 В нашем проекте используется тестирование для корректности работы. Мы использовали фреймвор pytest.
@@ -78,10 +99,11 @@ src\__init__.py	           0	     0	     0	     100%
 src\decorators.py         20         3       0        85%
 src\external_api.py       17	     0	     0	     100%
 src\generators.py          9	     0	     0	     100%
-src\masks.py	          17	     0	     0	     100%
+src\main.py               65        14       0        78%
+src\masks.py	          36	     0	     0	     100%
 src\processing.py          8	     0	     0	     100%
 src\transaction_reader.py  7	     0	     0	     100%
-src\utils.py	          13	     2	     0	      85%
+src\utils.py	          43	     2	     0	      95%
 src\widget.py	          24	     0	     0	     100%
-Total	                  58	     0	     0	     100%
+Total	                 229	    19	     0	      92%
 ```
