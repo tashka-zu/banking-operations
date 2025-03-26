@@ -1,6 +1,8 @@
 import json
 import logging
 import os
+import re
+from collections import Counter
 
 log_dir = "../logs"
 os.makedirs(log_dir, exist_ok=True)
@@ -39,3 +41,21 @@ def load_transactions(file_path):
 
 file_path = "../data/operations.json"
 transactions = load_transactions(file_path)
+
+
+def search_transactions_by_description(transactions, search_string):
+    """Search transactions by description using regex."""
+    pattern = re.compile(search_string, re.IGNORECASE)
+    return [transaction for transaction in transactions if pattern.search(transaction.get("description", ""))]
+
+
+def count_transactions_by_category(transactions, categories):
+    """Count transactions by category."""
+    category_counts = Counter()
+    for transaction in transactions:
+        description = transaction.get("description", "")
+        for category in categories:
+            if category.lower() in description.lower():
+                category_counts[category] += 1
+                break
+    return dict(category_counts)
